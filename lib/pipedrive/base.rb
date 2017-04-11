@@ -14,6 +14,7 @@ module Pipedrive
       method = args[0]
       fail 'method param missing' unless method.present?
       url = build_url(args, params.delete(:fields_to_select))
+      puts "url: #{url.inspect}"
       begin
         res = connection.__send__(method.to_sym, url, params)
       rescue Errno::ETIMEDOUT
